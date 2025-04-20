@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:wght@700&display=swap');
+
+/* font-family: "Montserrat", sans-serif; */
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* ********************************* */
+/* THIS STYLE WILL BE APPLIED IN ALL SCREEN SIZES */
+
+/* IMAGE LOGO IN NAVBAR */
+.head img{
+    border-radius: 50%;
+}
+/* LIST ITEM IN NAVIGATION BAR */
+nav ul li{
+    list-style-type: none;
+    margin: 5px;
+    cursor: pointer;
+    color: white;
+}
+#btnNav{
+    color: white;
+    list-style: none;
+    text-decoration: none;
+}
+.list{
+    font-size: 18px;
+    font-family: "Nunito", sans-serif;
+}
+.active{
+    border-bottom: 2px solid white;
+}
+/* NAV */
+nav{
+    background-color: #8d0e0e;
+    position: fixed;
+    width: 100vw;
+    z-index: 9;
+}
+.offcanvas-header{
+    background-color: #3e67a0;
+}
+/* REGISTER BUTTON */
+.register button{
+    font-size: 14px;
+    transition: all 0.5s ease;
+}
+.register button:hover{
+    transform: translateY(-5px);
+}
+.dropdown, .offcanvas-body ul li a{
+    list-style: none;
+    text-decoration: none;
+}
+.dropdown-menu .dropdown-item:hover{
+    background-color: #3e67a0;
+}
+
+
+
+/* ********************************** */
+/* FOOTER */
+
+footer{
+    background-color: #8d0e0e;
+    color: white;
+    width: 100%;
+}
+footer table, table a{
+    text-decoration: none;
+    color: white;
+    font-family: Nunito;
+    text-align: center;
+}
+footer .bottomPage{
+    /* background-color: green; */
+    width: 70%;
+}
+footer table{
+    /* background-color: green; */
+    width: 100%;
+    table-layout: fixed;
+    color: white;
+}
+footer table a:hover{
+    color: #ccc;
+}
+footer img{
+    border-radius: 50%;
+    width: 14vw;
+}
+
+
+/* *************************************************************** */
+
+
+
+/* *********************************** */
+/* IMAGE LOGO IN NAVIGATION BAR */
+/* MEDIA QUERIES */
+@media (max-width: 320px){
+    .head img{
+        width: 30px;
+    }
+}
+
+@media (min-width: 320px){
+    .head img{
+        width: 40px;
+    }
+
+    /* BURGER ICON IN NAVBAR */
+    .bars i{
+        font-size: 20px;
+    }
+
+    /* OFFCANVA ELEMENTS FONT SIZE */
+    .offcanvas-title{
+        font-size: 18px;
+    }
+
+    .offcanva-items{
+        font-size: 14px;
+    }
+    .offcanva-items li:hover{
+        background-color: #ccc;
+    }
+    /* footer */
+
+    .footer thead{
+        font-size: 16px;
+    }
+    .footer tbody{
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 375px){
+    footer .botlogo img{
+        width: 40px;
+    }
+}
+
+@media (min-width: 425px){
+    .head img{
+        width: 45px;
+    }
+
+    /* OFFCANVA ELEMENTS FONT SIZE */
+    .offcanvas-title{
+        font-size: 20px;
+    }
+
+    .offcanva-items{
+        font-size: 16px;
+    }
+    
+    footer .botlogo img{
+        width: 45px;
+    }
+}
+
+@media (min-width: 576px){
+    footer .botlogo img{
+        width: 50px;
+    }
+    .footer thead{
+        font-size: 18px;
+    }
+    .footer tbody{
+        font-size: 14px;
+    }
+    footer .bottomPage{
+        width: 60%;
+    }
+}
+
+
+@media (min-width: 768px){
+    .head img{
+        width: 50px;
+    }
+
+    /* BURGER ICON IN NAVBAR */
+    .bars i{
+        font-size: 20px;
+    }
+    footer .botlogo img{
+        width: 55px;
+    }
+}
+
+@media (min-width: 1024px){
+    .footer{
+        padding: 5px 20px;
+    }
+    .head img{
+        width: 64px;
+    }
+    .footer thead{
+        font-size: 20px;
+    }
+    footer .botlogo img{
+        width: 70px;
+    }
+}
+@media (min-width: 1200px){
+    footer .bottomPage{
+        width: 50%;
+    }
+}
+@media (min-width: 1600px){
+    footer .bottomPage{
+        width: 40%;
+    }
+}
+@media (min-width: 1920){
+    footer .bottomPage{
+        width: 30%;
+    }
+}
+
+/* ************************************** */
+/* NAVIGATION BAR */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

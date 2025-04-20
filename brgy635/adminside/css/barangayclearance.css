@@ -1,0 +1,151 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* font-family: "Montserrat", sans-serif; */
+/* font-family: "Epilogue", sans-serif; */
+/* font-family: "Archivo", sans-serif;*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.mainHolder{
+    /* background-color: pink; */
+    margin: 80px 70px;
+}
+
+.heading{
+    /* background-color: green; */
+    margin-bottom: 10px;
+}
+
+.sub-heading h1{
+    font-size: 27px;
+    float: top;
+    margin: 1rem 0 0 5.5rem;
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+}
+.sub-heading #zone{
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.sub-heading h2{
+    font-size: 54px;
+    font-family: "Poppins", sans-serif;
+    float: right;
+}
+.sub-heading #year{
+    color: black;
+}
+
+
+.sub-heading #permit{
+    font-size: 11px;
+}
+
+.serialnum{
+    margin: 2rem 0;
+}
+.serialnum p{
+    float: right;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+}
+
+#logo{
+    width: 80px;
+}
+
+.container .title h1{
+    text-transform: uppercase;
+    font-size: 28px;
+    /* font-weight: bolder; */
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container #certify{
+    line-height: 24px;
+}
+.container p{
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.vitalinfo{
+    background-color: rgba(255, 255, 255, 0); 
+    margin: 2rem 0 2rem 5rem;
+}
+
+.vitalinfo p span{
+    font-size: 14px;
+    font-weight: bold;
+}
+.vitalinfo p{
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 15px;
+
+}
+.vitalinfo h1{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: "Poppins", sans-serif;
+
+}
+.vitalinfo p u{
+    text-transform: capitalize;
+}
+.vitalinfo #name u, #purpose u{
+    margin-left: 60px;
+}
+#postalAdd u{
+    margin-left: 23px;
+}
+#marital u{
+    margin-left: 33px;
+}
+#citizenship u{
+    margin-left: 50px;
+}
+
+.ps:nth-child(1n){
+    margin-top: 3rem;
+}
+.note:nth-child(1n){
+    margin-top: 2rem;
+}
+#moreover{
+    margin-top: 10px;
+}
+
+.chairman h1{
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    margin-top: 8rem;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.footer{
+    margin-top: 4rem;
+}
+
+.footer p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.vital-group{
+    /* background-color: orange; */
+    
+}
+.vital-group span{
+    /* background-color: green; */
+}

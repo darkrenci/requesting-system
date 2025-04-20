@@ -1,0 +1,732 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:wght@700&display=swap');
+
+/* font-family: "Montserrat", sans-serif; */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+body{
+    /* width: 100vw;
+    height: 100vh;
+    overflow-x: hidden; */
+    padding: 0 !important;
+}
+
+.sidebar ul li:hover{
+    background-color: #2e0a0a;
+    border-radius: 4px;
+}
+
+@media (min-width: 320px){
+    
+    .holder{
+        /* width: 100vw; */
+        overflow-x: hidden;
+        display: block;
+    }
+    .adminHead2{
+        background-color: #8d0e0e;
+        padding: 0 1rem;
+    }
+    .adminHead2 img{
+        border-radius: 50%;
+        width: 50px;
+    }
+    .sidebar .user{
+        text-transform: capitalize;
+        margin-top: -15px;
+    }
+    .holder .offcanvas{
+        background-color: #8d0e0e;
+    }
+    .sidebar p{
+        font-size: 14px;
+    }
+    .sidebar ul{
+        margin-top: 2rem;
+    }
+    .sidebar ul li{
+        list-style: none;
+        margin-top: 5px;
+        padding: 2px;
+    }
+    .sidebar ul li a, .logout a{
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+    }
+
+    .navList ul li a{
+        display: block;
+    }
+    .logout{
+        position: absolute;
+        bottom: 10px;
+    }
+    /* ***************** */
+    /* DASHBOARD 320PX */
+    #dashboard h2, #docRequest h2, #listUsers h2, 
+    #councilImg h2, #eventImg h2, #logs h2,
+    #announcement h2, #pollSystem h2{
+        font-family: "Montserrat";
+
+        font-size: 20px;
+        /* background-color: pink; */
+    }
+    .box-container{
+        /* background-color: pink; */
+        width: 80vw;
+        margin: auto;
+        display: block;
+        color: white;
+        font-family: "Nunito", sans-serif;
+        font-size: 14px;
+        text-align: center;
+        padding: 1rem;
+    }
+    .box-container .box:nth-child(2n-1), .rbox-container .request-box:nth-child(2n-1){
+        background-color: #0081A7;
+    }
+    .box-container .box, .rbox-container .request-box{
+        background-color: #B31312;
+    }
+    .box{
+        transition: transform 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+        /* width: 80vw; */
+        padding: 0 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+    .box:hover{
+        transform: scale(1.05);
+    }
+
+
+    /* ***************** */
+    /* REQUEST DOCUMENT 320PX */
+    #docRequest .rbox-container{
+        width: 80vw;
+        margin: auto;
+        /* background-color: orange; */
+    }
+    .request-box{
+        border-radius: 5px;
+        text-align: center;
+        margin: 5px;
+        padding: 2px;
+        /* background-color: red; */
+    }
+    .request-box h3{
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        font-weight: 400;
+        /* padding: 5px; */
+    }
+    #requestDetails{
+        overflow: scroll;
+        margin: 1rem 0 2rem 0;
+        /* background-color: green; */
+        height: 50vh;
+    }
+    
+    .requestDetails-container table thead{
+        /* background-color: orange; */
+        font-size: 12px;
+        text-align: center;
+        
+    }
+    thead tr th, tbody tr td{
+        border: 1px solid rgb(104, 104, 104);
+        padding: 0 2px;
+    }
+    .requestDetails-container table tbody{
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* ***************** */
+    /* LIST USERS 320PX */
+    #listUsers .table-container{
+        width: 80vw;
+        margin: auto;
+        /* overflow: scroll; */
+        /* background-color: red; */
+    }
+    .table-container table thead tr th,
+    .table-container table tbody tr td{
+        font-size: 12px;
+        padding: 2px 5px;
+        border: 1px solid #9b9b9b;
+    }
+    
+
+    /* ******************************* */
+    /* COUNCIL IMAGE AND IMAGE EVENTS*/
+    #councilImg .containerWrap{
+        /* background-color: pink; */
+        width: 80vw;
+        margin: auto;
+    }
+    .containerWrap form{
+        margin: 1rem auto;
+        width: 65vw;
+        border: 1px solid #505050;
+        padding: 10px;
+        font-size: 13px;
+    }
+    form .btnHolder button{
+        padding: 5px;
+        font-size: 12px;
+        margin-top: 1rem;
+    }
+    .gallery .image{
+        width: 75vw;
+        margin: 1rem auto;
+        border: 1px solid rgb(145, 145, 145);
+        padding: 5px 0;
+        border-radius: 10px;
+    }
+    .gallery img{
+        width: 100%;
+        height: 30vh;
+        margin: auto;
+    }
+    .image button{
+        font-size: 14px;
+        padding: 5px;
+    }
+    
+
+    /* ******************************* */
+    /* ANNOUNCEMENT */
+    
+    #announcement .announcementForm{
+        width: 75vw;
+        margin: auto;
+        border: 1px solid rgb(145, 145, 145);
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+        padding: 5px 0;
+    }
+    .announcementForm .input{
+        text-align: center;
+    }
+    .announcementForm .input input,
+    .announcementForm .input textarea{
+        width: 80%;
+    }
+    .announcementForm .input input[type="date"]{
+        /* background-color: red; */
+        width: 50%;
+    }
+    .announcementForm .btnUpload button{
+        font-size: 13px;
+        padding: 5px;
+    }
+    .displayRow{
+        border: 1px solid #9b9b9b;
+        width: 80vw;
+        height: 70vh;
+        overflow: scroll;
+        margin: 1rem auto;
+        padding: 5px;
+        font-size: 14px;
+        text-align: justify;
+    }
+    .displayRow h3{
+        font-size: 18px;
+    }
+    .uploadResponse h3{
+        font-size: 18px;
+        margin-top: 1rem;
+    }
+    .displayRow #date{
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+
+    #pollsys{
+        
+    }
+
+    /* ************************* */
+    /* LOGS  */
+    #logs{
+        /* background-color: pink; */
+    }
+    #logList{
+        width: 75vw;
+        margin: auto;
+    }
+    #logList table thead tr th,
+    #logList table tbody tr td{
+        font-size: 12px;
+    }
+
+    /* ************************* */
+    /* MODAL FOR ADMIN DELETE */
+    
+    .deleteAdmin .modal-content{
+        /* background-color: orange; */
+        width: 80vw;
+        margin: auto;
+    }
+    .modal-content .modal-header{
+        padding: 5px;
+        
+    }
+    .modal-header h1{
+        font-size: 16px;
+    }
+    .modal-body h5{
+        font-size: 16px;
+    }
+    .modal-body p, .modal-body ul li{
+        font-size: 14px;
+    }
+    .modal-footer button,
+    .modal-body form button[name="delConfirm"]{
+        font-size: 14px;
+        padding: 5px;
+    }
+    .modal-body form .input label,
+    .modal-body form .input input{
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .modal-body form .input{
+        text-align: center;
+    }
+
+    .msgResponse{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-family: "Montserrat";
+        font-size: 24px;
+    }
+
+}
+
+@media (min-width: 375px){
+    .deleteAdmin .modal-content{
+        width: 70vw;
+        margin: auto;
+    }
+    .modal-content .modal-header{
+        padding: 5px 10px;
+        
+    }
+
+    .modal-body form .input{
+        margin-top: 10px;
+        display: block;
+    }
+}
+
+@media (min-width: 425px) {
+    .rbox-container .request-box h3{
+        font-size: 14px;
+    }
+    .requestDetails-container table thead tr th{
+        font-family: "Montserrat";
+        font-size: 14px;
+        border: 1px solid #ccc;
+        /* border: 1px solid #fff; */
+    }
+    .requestDetails-container table tbody tr td{
+        font-family: "Nunito";
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    /* ******************************* */
+    /* ANNOUNCEMENT */
+    .announcementForm{
+        /* background-color: green;
+        padding: 10px; */
+    }
+    .announcementForm .input{
+        /* background-color: orange; */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: justify;
+        margin-top: 10px;
+        padding: 0 5px;
+    }
+    .announcementForm label{
+        font-size: 14px;
+    }
+    .announcementForm .input input,
+    .announcementForm .input textarea,
+    .announcementForm .input input[type="date"]{
+        width: 40vw;
+    }
+}
+
+@media (min-width: 576px){
+    .gallery .image{
+        width: 55vw;
+    }
+    .containerWrap form{
+        width: 60vw;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 768px){
+    .offcanvas .user{
+        font-size: 16px;
+    }
+    .offcanvas-header h6{
+        font-size: 20px;
+    }
+    .sidebar{
+        width: 40vw;
+        margin: 1rem auto 0 auto;
+    }
+    .sidebar ul li{
+        margin-top: 10px;
+    }
+    .sidebar ul li a{
+        font-size: 14px;
+    }
+    .logout a{
+        font-size: 14px;
+    }
+
+    /* ***************** */
+    /* DASHBOARD 320PX */
+    #dashboard h2, #docRequest h2, #listUsers h2, 
+    #councilImg h2, #eventImg h2, #logs h2,
+    #announcement h2, #pollSystem h2{
+        font-family: "Montserrat";
+        font-size: 30px;
+        margin-top: 2rem;
+    }
+
+    .box-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .box{
+        height: 15vh;
+        width: 20vw;
+        font-size: 16px;
+        margin: 10px;
+        padding: 5px;
+    }
+
+    
+    /* ***************** */
+    /* REQUEST DOCUMENT 320PX */
+    #docRequest .rbox-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .request-box{
+        height: 15vh;
+        /* padding: 10px; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* ***************** */
+    /* LIST USERS 768px */
+    #listUsers .table-container{
+        /* background-color: green; */
+    }
+    .table-container table thead tr th,
+    .table-container table tbody tr td{
+        /* font-size: 12px;
+        padding: 2px 5px;
+        border: 1px solid #9b9b9b; */
+        font-size: 14px;
+    }
+
+    /* ******************************* */
+    /* COUNCIL IMAGE AND IMAGE EVENTS*/
+    #councilImg .containerWrap{
+        /* background-color: pink; */
+        /* width: 80vw;
+        margin: auto; */
+    }
+    .containerWrap form{
+        width: 50vw;
+        font-size: 14px;
+        padding: 10px;
+    }
+    form .btnHolder button{
+        padding: 5px;
+        margin: 0;
+    }
+    .display{
+        margin-top: 3rem;
+    }
+    .gallery{
+        /* background-color: green; */
+        display: flex;
+        /* width: 50vw; */
+
+        overflow: scroll;
+    }
+    .gallery .image{
+        margin: 5px;
+        padding: 5px;
+        border: 2px solid rgb(145, 145, 145);
+    }
+    .gallery img{
+        /* background-color: pink; */
+        width: 30vw;
+        
+    }
+
+    .announcementForm label{
+        font-size: 16px;
+    }
+
+}
+
+@media (min-width: 992px){
+    .holder{
+        /* background-color: orange; */
+        margin: 0;
+        padding: 0;
+        width: auto;
+        height: 100vh;
+        display: flex;
+        /* overflow-y: scroll; */
+    }
+    .content{
+        /* background-color: pink; */
+        margin: 0;
+        padding: 0;
+        width: 80vw;
+        overflow-y: scroll;
+    }
+    .container{
+        /* background-color: gray; */
+    }
+    .adminHead{
+        background-color: #669bbc;
+        margin: 2rem 3rem;
+        height: 10vh;
+        border-radius: 10px;
+        padding: 1rem;
+        opacity: 90%;
+    }
+    .adminHead h1{
+        font-size: 30px;
+        /* color: white; */
+    }
+    .adminHead img{
+        width: 100px;
+        border-radius: 50%;
+    }
+
+    /* sidebar */
+    .sidebar{
+        background-color: #8d0e0e;
+        margin: 0;
+        padding: 0;
+        width: 20vw;
+        height: 100vh;
+        display: block;
+    }
+    .sidebar h3{
+        font-size: 24px;
+    }
+    .sidebar .navList{
+        margin: 1rem;
+        
+    }
+    .navList ul li{
+        /* background-color: green; */
+        margin-top: 2px;
+    }
+    .navList ul li a{
+        font-size: 16px;
+        padding: 5px;
+    }
+    
+
+    /* ****************** */
+    /* DASHBOARD */
+    #dashboard{
+        /* background-color: orange; */
+        width: 70vw;
+        margin: auto;
+    }
+    #dashboard .box-container{
+        /* background-color: green; */
+        width: auto;
+    }
+
+
+    /* ****************** */
+    /* DOCUMENT REQUEST */
+    #docRequest{
+        /* background-color: orange; */
+        width: 70vw;
+        margin: auto;
+    }
+    #docRequest .rbox-container{
+        /* background-color: green; */
+        width: inherit;
+    }
+    .rbox-container .request-box{
+        /* background-color: pink; */
+        padding: 0;
+        height: 10vh;
+        width: 15vw;
+        
+    }
+    .requestDetails-container{
+        /* background-color: orange; */
+        height: auto;
+    }
+
+    .requestDetails-container button[name="btnRemarks"]{
+        /* background-color: orange; */
+        padding: 2px 5px;
+        font-size: 12px;
+    }
+
+    /* modal for serial number in generate document */
+    
+    
+
+    /* ****************** */
+    /* LIST OF USERS */
+    #listUsers{
+        /* background-color: green; */
+        width: 70vw;
+        margin: 0 auto 1rem auto;
+    }
+    #listUsers .table-container{
+        /* background-color: orange; */
+        width: inherit;
+    }
+
+    /* ****************** */
+    /* COUNCIL IMAGE AND ADD EVENTS*/
+    #councilImg, #eventImg{
+        /* background-color: green; */
+        width: 70vw;
+        margin: auto;
+    }
+    .display .gallery{
+        overflow-y: hidden;
+    }
+    .display{
+        /* background-color: orange; */
+        width: 65vw;
+        margin: auto;
+    }
+    .gallery img{
+        height: 40vh;
+        
+    }
+    .gallery::-webkit-scrollbar{
+        height: 10px;
+        width: 10px;
+    }
+    .gallery::-webkit-scrollbar-track{
+        background-color: #9b9b9b;
+        border-radius: 10px;
+    }
+    .gallery::-webkit-scrollbar-thumb{
+        background-color: #8d0e0e;
+        border-radius: 10px;
+    }
+
+    /* ****************** */
+    /* ANNOUNCEMENT */
+    #announcement{
+        /* background-color: green; */
+        width: 70vw;
+        margin: auto;
+    }
+    #announcement .announcementForm {
+        /* background-color: orange; */
+        width: 55vw;
+        margin: 1rem auto;
+    }
+    .displayAnnouncement{
+        /* background-color: orange; */
+        width: 60vw;
+        margin: auto;
+    }
+    .displayRow{
+        /* background-color: pink; */
+        width: inherit;
+        height: 80vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    #announcement .input input, 
+    #announcement .input textarea,
+    #announcement .input input[type="date"]{
+        width: 35vw;
+    }
+    
+    /* ******************************* */
+    /* LOGS */
+    #logs{
+        /* background-color: green; */
+        width: 70vw;
+        margin: auto;
+    }
+    #logList{
+        /* background-color: orange; */
+        width: 60vw;
+        margin: 1rem auto;
+    }
+    #logList table{
+        /* background-color: pink; */
+        width: 100%;
+    }
+    #logList table thead tr th{
+        font-size: 16px;
+        padding: 2px;
+    }
+    #logList table tbody tr td{
+        font-size: 14px;
+        padding: 2px;
+    }
+
+}
+
+/* ******************************* */
+/* POLL SYSTEM */
+#pollSystem {
+    width: 70vw;
+    margin: auto;
+
+}

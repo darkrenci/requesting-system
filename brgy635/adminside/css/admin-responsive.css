@@ -1,0 +1,842 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:wght@700&display=swap');
+
+/* font-family: "Montserrat", sans-serif; */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+table{
+    background-color: white;
+}
+.holder{
+    /* background-color: pink; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar{
+    background-color: #8d0e0e;
+    position: fixed;
+    width: 40vw;
+    height: 100vh;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    z-index: 9;
+    transition: all 1s ease;
+    display: none;
+}
+.sidebar ul li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 7px 10px;
+    font-size: 14px;
+    font-family: "Montserrat";
+}
+
+.sidebar ul li a:hover, .bottom button a:hover{
+    background-color: #2e0a0a;
+    border-radius: 4px;
+}
+.sidebar .components{
+    /* background-color: green; */
+    margin-top: 1rem;
+}
+
+.sidebar-header{
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-header-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.sidebar .icon2{
+    font-size: 30px;
+    color: white;
+    margin: 20px 5px;
+    animation: rotate 1s ease;
+}
+#deleteAll .container{
+    z-index: 999;
+}
+@keyframes rotate {
+    0%{
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(0);
+    }
+}
+
+.sidebar-header h3{
+    font-size: 20px;
+    font-family: "Poppins";
+    color: white;
+    text-align: center;
+    font-weight: 600;
+}
+.bottom button{
+    bottom: 50px;
+    position: fixed;
+    background-color: transparent;
+    border: none;
+
+}
+.bottom button a{
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px;
+    font-family: "Montserrat";
+}
+
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+.content{
+    /* background-color: orange; */
+    width: 100vw;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* ADMIN HEAD STYLE */
+.adminHead{
+    background-color: #669bbc;
+    opacity: 90%;
+    border-radius: 10px;
+    height: 5vh;
+    padding: 5px 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.content .adminHead img{
+    width: 25vw;
+    /* margin-top: -25px; */
+    border-radius: 50%;
+}
+.content .adminHead h1{
+    font-family: "Verdana";
+    font-size: 22px;
+    color: #24282B;
+    text-shadow: 1px 1px 1px #919191,
+                1px 2px 1px #919191,
+                1px 3px 1px #919191,
+                1px 4px 1px #919191,
+        1px 3px 5px rgba(16, 16, 16, 0.4);
+}
+
+
+/* ICON */
+.iconbar{
+    margin-top: 2rem;
+    font-size: 30px;
+}
+
+/* ******************************************* */
+/* DASHBOARD */
+#dashboard h2, #docRequest h2, #listUsers h2, 
+#councilImg h2, #eventImg h2, #logs h2, #announcement h2,
+#deleteAll h2{
+    font-family: "Montserrat";
+    font-size: 24px;
+    /* background-color: pink; */
+}
+#dashboard .box-container{
+    /* background-color: green; */
+    display: block;
+    /* flex-wrap: wrap; */
+    width: 80vw;
+    margin: auto;
+}
+.box {
+    /* background: #fff; */
+    /* background-color: green; */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    /* width: 20vw; */
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    /* letter-spacing: 1px; */
+    font-family: "Nunito", sans-serif;
+    transition: transform 0.3s ease;
+}
+.box:hover{
+    transform: scale(1.05);
+}
+.box-container .box:nth-child(2n-1), .rbox-container .request-box:nth-child(2n-1){
+    background-color: #0081A7;
+}
+.box-container .box, .rbox-container .request-box{
+    background-color: #B31312;
+}
+
+
+/* ****************************************** */
+/* DOCUMENT REQUEST */
+
+#docRequest .rbox-container{
+    /* background-color: orange; */
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.request-box{
+    /* width: 20vw; */
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.request-box h3{
+    font-size: 16px;
+    color: white;
+    font-family: "Nunito";
+    text-align: center;
+}
+#docRequest #requestDetails {
+    /* background-color: green; */
+}
+#requestDetails .requestDetails-container{
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: scroll;
+    padding: 5px;
+    height: 50vh;
+    margin-top: 1rem;
+}
+.requestDetails-container table thead{
+    /* background-color: orange; */
+    
+}
+.requestDetails-container table thead tr th{
+    font-family: "Montserrat";
+    font-size: 14px;
+    border: 1px solid #ccc;
+    /* border: 1px solid #fff; */
+}
+.requestDetails-container table tbody tr td{
+    font-family: "Nunito";
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+
+/* #requestDetails .requestDetails-container::-webkit-scrollbar{
+    height: 5vh;
+    background-color: red;
+} */
+
+
+/* ************************************************ */
+/* LIST OF USERS */
+
+#listUsers .table-container{
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: scroll;
+    height: 70vh;
+    padding: 5px;
+    margin-top: 1rem;
+}
+.table-container table thead tr th{
+    font-family: "Montserrat";
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+.table-container table tbody tr td{
+    font-size: 14px;
+    font-family: "Nunito";
+    border: 1px solid #ccc;
+}
+
+
+/* ******************************************** */
+/* ADD/DELETE IMAGE STYLE */
+#councilImg{
+    /* background-color: green; */
+}
+.containerWrap{
+    /* background-color: pink; */
+    margin: 2rem 1rem;
+}
+.containerWrap form{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* width: fit-content; */
+}
+.containerWrap form button{
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.containerWrap button:hover {
+    background-color: #0056b3;
+}
+/* display images of added council image */
+#councilImg .display .gallery, 
+#eventImg .display .gallery{
+    display: flex;
+    overflow: auto;
+}
+#councilImg .display .gallery::-webkit-scrollbar,
+#eventImg .display .gallery::-webkit-scrollbar{
+    background-color: rgb(180, 89, 89);
+    height: 10px;
+    border-radius: 20px;
+}
+#councilImg .display .gallery::-webkit-scrollbar-thumb,
+#eventImg .display .gallery::-webkit-scrollbar-thumb{
+    background-color: #B31312;
+    border-radius: 20px;
+}
+#councilImg .display .gallery .image,
+#eventImg .display .gallery .image{
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+.gallery .image img{
+    width: 70vw;
+    height: 20vh;
+    margin: 0 5px;
+    border: 1px solid black;
+}
+.gallery .image button{
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+}
+
+/* ********************************** */
+/*  events page */
+#eventImg{
+    /* background-color: pink; */
+    margin-top: 2rem;
+}
+
+
+/* ******************************************** */
+/* LOG LIST */
+#logList{
+    /* background-color: pink; */
+}
+#logList .scrollable-table thead tr th{
+    /* bor */
+}
+#logList .scrollable-table{
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow-y: scroll;
+    padding: 5px;
+    height: 70vh;
+    margin-top: 2rem;
+}
+.scrollable-table table thead tr th{
+    font-family: "Montserrat";
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+.scrollable-table table tbody tr td{
+    font-size: 14px;
+    font-family: "Nunito";
+    border: 1px solid #ccc;
+}
+
+/* STYLE FOR ANNOUNCEMENT */
+#announcement{
+    /* background-color: red; */
+}
+
+#announcement .announcementForm{
+    /* background-color: pink; */
+    width: 45vw;
+    margin: 2rem auto;
+    background-color: #e6e6e6;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+}
+.announcementForm .announcement-input{
+    /* background-color: red; */
+    margin: 1rem;
+    width: 35vw;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+.announcementForm .announcement-input label{
+    font-size: 20px;
+    font-family: "Nunito";
+}
+.announcementForm .announcement-input input{
+    /* border: 1px solid black; */
+    /* border: none; */
+    outline: none;
+    width: 20vw;
+    height: 5vh;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    font-family: "Nunito";
+}
+.announcementForm .main textarea{
+    width: 20vw;
+    height: 5vh;
+    resize: none;
+    /* border: 1px solid black; */
+    outline: none;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    font-family: "Nunito";
+}
+textarea:focus, input:focus{
+    border: 2px solid #4671EA;
+}
+textarea::-webkit-scrollbar{
+    width: 0px;
+}
+.announcementForm .btnUpload{
+    /* background-color: #fff; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btnUpload button{
+    background-color: #007BFF;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.btnUpload button:hover{
+    background-color: #0056b3;
+}
+
+#announcement .uploadResponse h3{
+    font-family: "Montserrat";
+    font-size: 20px;
+}
+
+
+/* DISPLAY ANNOUNCEMENT IN ADMINSIDE */
+.displayAnnouncement{
+    background-color: rgb(238, 238, 238);
+    margin: 1rem auto 5rem auto;
+    height: 40vh;
+    overflow-y: scroll;
+    width: 60vw;
+
+}
+.displayRow{
+    background-color: white;
+    /* width: 15vw; */
+    /* height: 25vh; */
+    margin: 1rem;
+    border-radius: 10px;
+    text-justify: justify;
+    font-family: "Nunito";
+    padding: 10px;
+    box-shadow: 2px 2px 5px #a0a0a0;
+}
+.displayRow #date{
+    font-weight: 800;
+    text-align: right;
+}
+.displayRow h3{
+    font-size: 22px;
+    font-family: "Montserrat";
+    text-align: center;
+}
+.displayRow .pre-wrap{
+    /* background-color: orange; */
+    width: 50vw;
+    margin: auto;
+    text-align: justify;
+}
+.displayRow button{
+    background-color: #007BFF;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.displayRow button:hover{
+    background-color: #0056b3;
+}
+.displayAnnouncement::-webkit-scrollbar{
+    /* width: 5px; */
+    background-color: #b6b5b5;
+    color: #B31312;
+}
+.displayAnnouncement::-webkit-scrollbar-thumb{
+    background-color: #B31312;
+    border-radius: 10px;
+}
+
+@media (min-width: 320px){
+    .holder .sidebar .sidebar-header i{
+        font-size: 16px;
+    }
+    .sidebar h3{
+        font-size: 14px;
+    }
+    .sidebar .components li a{
+        font-size: 12px;
+        padding: 5px;
+        margin: 0;
+    }
+}
+@media screen and (min-width: 375px){
+    .gallery .image img{
+        width: 50vw;
+        height: 20vh;
+    }
+}
+@media screen and (min-width: 425px){
+    /* ADMIN HEAD STYLE */
+    .adminHead{
+        height: 8vh;
+    }
+    .content .adminHead img{
+        width: 23vw;
+    }
+    .content .adminHead h1{
+        font-size: 26px;
+    }
+    .gallery .image img{
+        width: 50vw;
+        height: 22vh;
+    }
+    .containerWrap form{
+        width: 60vw;
+        margin: auto;
+    }
+}
+@media screen and (min-width: 570px){
+    .content .adminHead img{
+        width: 20vw;
+        /* margin-top: -25px; */
+        border-radius: 50%;
+    }
+    .gallery .image img{
+        width: 35vw;
+        height: 25vh;
+    }
+}
+@media screen and (min-width: 670px){
+    .content .adminHead img{
+        width: 18vw;
+        /* margin-top: -25px; */
+        border-radius: 50%;
+    }
+}
+@media screen and (min-width: 768px){
+    .content{
+        padding: 30px 50px;
+    }
+    .sidebar{
+        width: 30vw;
+    }
+    .content .adminHead img{
+        width: 15vw;
+        /* margin-top: -25px; */
+        border-radius: 50%;
+    }
+    .sidebar .components li a{
+        font-size: 14px;
+    }
+
+    /* DASHBOARD */
+    #dashboard .box-container{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .box {
+        width: 24vw;
+        height: 14vh;
+        font-size: 18px;
+    }
+
+
+    .gallery .image img{
+        width: 30vw;
+        height: 25vh;
+    }
+    .containerWrap form input, .containerWrap form button{
+        font-size: 16px;
+    }
+    .scrollable-table table thead tr th{
+        font-size: 18px;
+    }
+    .scrollable-table table tbody tr td{
+        font-size: 16px;
+    }
+}
+
+
+@media screen and (min-width: 1024px){
+    .sidebar{
+        width: 20vw;
+        display: block;
+    }
+    .sidebar .icon2, .content .iconbar, .hr{
+        display: none;
+    }
+    .sidebar-header{
+        /* background-color: pink; */
+        margin-top: 3rem;
+    }
+    .holder{
+        display: flex;
+    }
+    .content{
+        /* background-color: orange; */
+        width: 80vw;
+        right: 0;
+        position: fixed;
+        padding: 1rem 4rem 1rem 2rem;
+        height: 100vh;
+    }
+    .adminHead{
+        margin: 5rem 2rem 2rem 2rem;
+        padding: 50px 10px;
+    }
+    .content-container .adminHead h1{
+        font-size: 36px;
+    }
+    .adminHead .admin-content img{
+        width: 13vw;
+    }
+
+    /* DASHBOARD */
+    .container #dashboard, #docRequest, #listUsers, 
+    #councilImg, #eventImg, #logs{
+        margin-top: 3rem;
+    }
+    #dashboard h2, #docRequest h2, #listUsers h2,
+    #councilImg h2, #eventImg h2, #logs h2, #announcement h2,
+    #deleteAll h2{
+        font-size: 34px;
+    }
+    #dashboard .box-container{
+        width: 70vw;
+        margin-top: 2rem;
+    }
+    #dashboard .box{
+        width: 20vw;
+    }
+
+    /* DOCUMENT REQUEST */
+    
+    #docRequest .rbox-container{
+        /* background-color: red; */
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .rbox-container .request-box{
+        /* background-color: orange; */
+        width: 15vw;
+        height: 10vh;
+        margin: auto;
+    }
+    #requestDetails .requestDetails-container{
+        width: 70vw;
+        margin: 1rem auto;
+    }
+    .requestDetails-container table thead tr th, 
+    .table-container table thead tr th{
+        font-size: 16px;
+    }
+    .requestDetails-container table tbody tr td,
+    .table-container table tbody tr td{
+        font-size: 16px;
+    }
+
+    /* LIST OF USERS */
+    
+    #listUsers .table-container{
+        /* background-color: red; */
+        width: 70vw;
+        margin: 1rem auto;
+        height: 50vh;
+    }
+    .table-container table{
+        /* background-color: orange; */
+        width: 60vw;
+        margin: auto;
+    }
+    .table-container table thead tr th{
+        padding: 10px 5px;
+    }
+    .table-container table tbody tr td{
+        padding: 5px;
+    }
+    /* ADD/DELETE IMAGE COUNCIL */
+    
+    #councilImg .containerWrap form,
+    #eventImg .containerWrap form{
+        width: 35vw;
+    }
+    #councilImg .display,
+    #eventImg .display{
+        /* background-color: orange; */
+        width: 70vw;
+        margin: auto;
+    }
+    .display .gallery .image img{
+        width: 25vw;
+        height: 25vh;
+    }
+
+    /* LOGS */
+    #logList{
+        width: 70vw;
+        margin: auto;
+    }
+    #logList .scrollable-table{
+        height: 60vh;
+        margin: auto;
+    }
+    #logList .scrollable-table table{
+        width: 60vw;
+        margin: auto;
+    }
+    #logList .scrollable-table table thead tr th,
+    #logList .scrollable-table table tbody tr td{
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    /* generate button in document request */
+    #docRequest .requestDetails-container table tbody .generate-btn{
+        padding: 2px 0;
+        width: 100px;
+        margin: auto;
+    }
+}
+
+
+@media screen and (min-width: 1200px){
+    .content-container .adminHead{
+        height: 14vh;
+    }
+    .content-container .adminHead h1{
+        font-size: 40px;
+    }
+    .content-container .adminHead .admin-content img{
+        width: 12vw;
+    }
+    #dashboard .box-container .box{
+        width: 16vw;
+    }
+    #dashboard .box-container{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .display .gallery .image img{
+        width: 20vw;
+        height: 25vh;
+    }
+    
+}
+
+
+
+@media screen and (min-width: 1440px){
+    
+    .sidebar{
+        /* background-color: pink; */
+        width: 16vw;
+    }
+    .content{
+        width: 84vw;
+        padding: 0 6rem 0 4rem;
+        margin: auto;
+    }
+    #logList .scrollable-table table thead tr th,
+    #logList .scrollable-table table tbody tr td{
+        font-size: 18px;
+        padding: 5px;
+    }
+    #dashboard .box-container .box{
+        width: 14vw;
+    }
+    .display .gallery .image img{
+        width: 20vw;
+        height: 25vh;
+    }
+}
+
+@media screen and (min-width: 2400px){
+    .display .gallery .image img{
+        width: 15vw;
+        height: 20vh;
+    }
+    .content-container .adminHead .admin-content img{
+        width: 10vw;
+    }
+}
+
+
+
+
+
+
+
+

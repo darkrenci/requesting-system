@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:wght@700&display=swap');
+
+/* font-family: "Montserrat", sans-serif; */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.holder{
+    /* background-color: red; */
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+/* main sidenav */
+.sidenav{
+    background-color: #8d0e0e;
+    /* height: 100vw; */
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.sidenav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito";
+}
+.sidenav a{
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+.sidenav a i{
+    margin-right: 10px;
+}
+.sidenav .list{
+    margin-top: 5rem;
+}
+.sidenav a:hover {
+    background-color: #2e0a0a;
+    color: #fff;
+}
+.sidenav a.active {
+    background-color: #2e0a0a;
+    color: #fff;
+}
+.sidenav .logout {
+    margin-bottom: 60px;
+    font-family: "Nunito";
+}
+/* HIDES THE BURGER ICON */
+.sidenav .icon, .sidenav2, .hr{
+    display: none;
+}
+.submit {
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .5s;
+    color: white;
+}
+.submit:hover{
+    transform: translateY(-5px);
+    box-shadow: 1px 1px 1px  #3b4652;
+}
+
+/* ************************************************* */
+/* STYLE FOR THE MAIN CONTENT INSIDE SUB-MAIN-CONTENT DIV */
+.sub-main-content{
+    width: 90vw;
+    height: 100vh;
+    margin: auto;
+    padding: 30px;
+    overflow-y: scroll;
+}
+
+.main-content{
+    font-family: "Poppins";
+}
+.ints{
+    font-size: 25px;
+    margin: 1rem;
+    font-family: "Nunito";
+}
+.admin-content{
+    font-family: "Nunito";
+    font-size: 14px;
+    margin: 1rem;
+}
+
+.dashboard-widgets{
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    margin: auto;
+}
+.widget{
+    background-color: #B31312;
+    width: 20vw;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: white;
+    font-family: "Nunito", sans-serif;
+    padding: 20px;
+}
+.widget:nth-child(2n-1){
+    background-color: #0081A7;
+}
+.widget i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+}
+
+.dashboard-logs{
+    background-color: #f9f9f9;
+    width: 80vw;
+    margin: 5rem auto;
+    /* padding: 20px; */
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    overflow: scroll;
+    height: 50vh;
+}
+
+.dashboard-logs h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-family: "Poppins";
+    font-weight: 600;
+    padding: 20px;
+}
+.dashboard-logs table{
+    /* background-color: green; */
+    border-collapse: collapse;
+    width: 75vw;
+    margin: auto;
+    font-family: "Nunito";
+}
+
+.dashboard-logs th,.dashboard-logs td {
+    border: 2px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+.dashboard-logs th {
+    background-color: #f0f0f0;
+}
+  
+.dashboard-logs tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+  
+.dashboard-logs tr:hover {
+    background-color: #ccc;
+}
+
+
+/* ******************************************** */
+/* STYLES FOR PROFILE */
+.profile-section{
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: "Nunito";
+    width: 80vw;
+    margin: auto;
+    padding: 20px;
+}
+.profile-section h2{
+    font-size: 30px;
+    font-family: "Poppins";
+    font-weight: 600;
+}
+.profile-info{
+    /* background-color: grey; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 75vw;
+    margin: 1rem auto;
+}
+.profile-info h3{
+    font-size: 30px;
+    margin: 1rem 0;
+}
+
+/* personal information container */
+.personal-info, .address-info, .contact-info, .change-password{
+    width: 30vw;
+}
+.info-container{
+    /* background-color: red; */
+    border: 1px solid #ddd;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+.info-item input, .change-password-item input{
+    width: 15vw;
+    height: 5vh;
+    border: 1px solid black;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-weight: 700;
+}
+.info-item input:not(.emailAdd){
+    text-transform: uppercase;
+}
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-label {
+    font-weight: bold;
+}
+  
+.info-value {
+    color: #333;
+}
+  
+/* **************************************** */
+/* Change password container */
+.change-password-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    /* background-color: pink; */
+}
+  
+.change-password-item {
+    /* margin-bottom: 10px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: pink; */
+    /* padding: 10px 0; */
+}
+  
+.change-password-label {
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.change-password-button{
+    width: 20vw;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+}
+.change-password-container button{
+    /* border: 1px solid rgb(95, 95, 95); */
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    /* font-family: "Nunito"; */
+    /* font-size: 14px; */
+    width: auto;
+    background-color: #007bff;
+    color: white;
+}
+.change-password-container button:hover{
+    background-color: #0056b3;
+}
+
+.voting{
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 80vw;
+    margin: 2rem auto 5rem auto;
+    
+}
+
+
+
+/* style for request document section */
+.req-docs{
+    background-color: #f9f9f9;
+    /* background-color: pink; */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 80vw;
+    margin: 2rem auto 5rem auto;
+    padding: 20px;
+}
+
+.req-docs h3{
+    font-size: 30px;
+    font-family: "Poppins";
+    font-weight: 600;
+}
+.doc-type{
+    display: flex;
+    width: 75vw;
+    margin: 2rem auto;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Nunito";
+    font-size: 20px;
+    font-weight: 700;
+    padding: 5px;
+    border: 2px solid #ddd;
+}
+.doc-type > div {
+    background-color: #f0f0f0;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+.doc-type .docs:hover{
+    background-color: #B31312;
+    color: white;
+}
+
+.req-docs button{
+    padding: 10px;
+    background-color:#007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.req-docs button:hover{
+    background-color:#0056b3;
+}
+
+.doc-form{
+    /* background-color: orange; */
+    width: 70vw;
+}
+
+/* request document for barangay clearance */
+.brgyClearance-form, .businessClearance-form,
+.certOfIndigency-form, .certOfResidency-form{
+    /* background-color: red; */
+    margin: 1rem;
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.brgyClearance-form label, .businessClearance-form label,
+.certOfIndigency-form label, .certOfResidency-form label{
+    font-size: 18px;
+    font-family: "Nunito";
+
+}
+.brgyClearance-form input, .businessClearance-form input,
+.certOfIndigency-form input, .certOfResidency-form input{
+    height: 5vh;
+    width: 20vw;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 16px;
+}
+
+
+
+
+
+/* chatbox style */
+.chatbox{
+    position: fixed;
+    z-index: 3;
+    bottom: 50px;
+    right: 20px; /* Adjust this value to position the chatbox as desired */
+    width: 300px;
+    height: 400px;
+    background-color: #ffffff;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow-y: auto;
+}
+.chatbox.active {
+    display: none;
+}
+.chatbox h2{
+    font-family: "Nunito";
+    font-size: 20px;
+}
+/* Existing styles for chatbox */
+  
+.chat-input {
+    display: flex;
+    align-items: center;
+}
+  
+.chat-input input {
+    position: relative;
+    top:270px;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+  
+.chat-input button {
+    position: relative;
+    top:270px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.chat-input button:hover {
+    background-color: #0056b3;
+}
+  
+.chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 50px; /* Adjust this value to position the icon as desired */
+}
+  
+.chat-toggle a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+  
+.chat-toggle a:hover {
+    background-color: #0056b3;
+}
+

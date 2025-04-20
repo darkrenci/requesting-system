@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* font-family: "Montserrat", sans-serif; */
+/* font-family: "Epilogue", sans-serif; */
+/* font-family: "Archivo", sans-serif;*/
+
+
+.form{
+    /* background-color: red; */
+    font-family: "Epilogue", sans-serif;
+}
+
+.personal .input, .address .input{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* width: 90vw; */
+    margin: 10px 50px;
+}
+.form p{
+    font-size: 14px;
+}
+form label{
+    font-size: 14px;
+}
+.personal .input input, .address .input input{
+    padding: 2px 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid black;
+    outline: none;
+}
+.personal select option{
+    font-size: 14px;
+}
+form #submit{
+    border: none;
+    outline: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.invalidLoginMsg{
+    /* background-color: red; */
+    font-size: 24px;
+    text-align: center;
+    font-family: "Epilogue", sans-serif;
+
+}
+.returningCountdown{
+    text-align: center;
+}
+
+@media (min-width: 320px){
+    .modal form{
+        /* background-color: red; */
+    }
+    .personal .input, .address .input{
+        /* background-color: orange; */
+        margin: 10px 0;
+    }
+    .personal .status select:first-child{
+        font-size: 14px;
+    }
+    .personal .gender{
+        font-size: 14px;
+    }
+    .modal .form-login .input{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0;
+        font-family: "Epilogue";
+    }
+
+    .form-login input{
+        padding: 2px 5px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid black;
+        outline: none;
+    }
+
+}
+
+@media (min-width: 768px){
+    .modal form{
+        width: 40vw;
+        margin: auto;
+    }
+}
+
+@media (min-width: 992px){
+    .modal form{
+        width: 30vw;
+        margin: auto;
+    }
+}
+@media (min-width: 1200px){
+    .modal form{
+        width: 25vw;
+        margin: auto;
+    }
+}

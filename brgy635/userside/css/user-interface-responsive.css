@@ -1,0 +1,584 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu:wght@700&display=swap');
+
+/* font-family: "Montserrat", sans-serif; */
+
+
+@media screen and (min-width: 320px){
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+    /* hide navigation bar */
+    .sidenav{
+        /* background-color: pink; */
+        display: none;
+    }
+    .holder{
+        /* background-color: pink; */
+        /* width: 80vw; */
+        overflow-x: hidden;
+        /* display: flex; */
+    }
+
+    /* show burger icon for responsive navbar */
+    .icon{
+        display: block;
+        z-index: -1;
+        font-size: 20px;
+    }
+    .hr{
+        display: block;
+    }
+    /* main content */
+    .sub-main-content{
+        /* background-color: red; */
+        margin: 0;
+        width: 100vw;
+        position: fixed;
+        overflow-x: hidden;
+    }
+    .ints{
+        display: flex;
+        align-items: center;
+        /* justify-content: space-between; */
+        /* background-color: orange; */
+    }
+    .ints h1{
+        font-size: 30px;
+        margin-left: 20px;
+    }
+    .sidenav2{
+        background-color: #8d0e0e;
+        /* height: 100vw; */
+        width: 30vw;
+        /* visibility: hidden; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 9999;
+    }
+    .sidenav2 ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-family: "Nunito";
+    }
+    .sidenav2 a{
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .sidenav2 a i {
+        margin-right: 10px;
+    }
+    .sidenav2 .list{
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .sidenav2 li:hover {
+        background-color: #2e0a0a;
+        color: #fff;
+    }
+    .sidenav2 li.active {
+        background-color: #2e0a0a;
+        color: #fff;
+    }
+    .sidenav2 .logout {
+        margin-bottom: 60px;
+        font-family: "Nunito";
+    }
+    .sidenav2 .icon2{
+        font-size: 25px;
+        margin-right: 10px;
+        margin-bottom: 50px;
+        animation: rotate 1s ease;
+        color: white;
+    }
+    .sidenav2 .list ul li{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .sidenav2 .list ul li span{
+        color: white;
+    }
+    .sidenav2 .logout a{
+        font-size: 12px;
+    }
+    @keyframes rotate {
+        0%{
+            transform: rotate(0);
+        }
+        50%{
+            transform: rotate(180deg);
+        }
+        100%{
+            transform: rotate(0);
+        }
+    }
+
+    /* Welcoming message and email of the user */
+    .admin-content h1{
+        font-size: 14px;
+    }
+    .dashboard-widgets{
+        /* background-color: green; */
+        width: 80vw;
+        margin: auto;
+        flex-wrap: wrap;
+        /* display: grid;
+        grid-template-columns: repeat(3, 1fr); */
+    }
+    .widget{
+        background-color: #B31312;
+        margin: auto;
+        padding: 10px;
+        height: 10vh;
+        width: 25vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .widget i {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .widget h2{
+        font-size: 10px;
+    }
+
+
+    /* DASHBOARD LOG/ DOCUMENT REQUEST */
+    .dashboard-logs{
+        /* background-color: pink; */
+        margin-top: 30px;
+        padding: 0;
+        height: fit-content;
+        /* overflow-x: hidden; */
+    }
+    .dashboard-logs h2{
+        font-size: 20px;
+        padding: 10px;
+        margin: 0;
+        margin-bottom: 10px;
+        /* position: fixed; */
+    }
+
+    .dashboard-logs table{
+        background-color: orange;
+        /* margin-top: 3rem; */
+    }
+    .dashboard-logs table tr th, .dashboard-logs table tr td{
+        /* display: block; */
+        font-size: 14px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    /* USER PROFILE IN DASHBOARD */
+    .profile-section{
+        /* background-color: pink; */
+        /* margin: 0; */
+        padding: 0;
+    }
+    .profile-section h2{
+        font-size: 20px;
+        /* margin: 10px; */
+        padding: 10px;
+    }
+    .profile-info h3{
+        font-size: 20px;
+        margin: 1rem 0;
+    }
+    .profile-info{
+        /* background-color: grey; */
+        display: block;
+        width: 100vw;
+        margin: auto;
+    }
+    /* personal information container */
+    .personal-info, .address-info, .contact-info, .change-password{
+        width: 80vw;
+    }
+    .info-container{
+        /* background-color: red; */
+        border: none;
+        padding-left: 2px;
+        margin-top: 5px;
+    }
+    .info-item input, .change-password-item input{
+        width: 50vw;
+        height: 4vh;
+        font-size: 12px;
+        padding: 0 5px;
+        border: 1px solid black;
+    }
+    .info-label {
+        font-size: 16px;
+    }
+
+    /* CHANGE PASSWORD IN DASHBOARD */
+    .change-password-container {
+        border: none;
+        padding: 0;
+        border-radius: 5px;
+        margin-top: 0;
+        background-color: #f9f9f9;
+        /* background-color: pink; */
+    }
+    .change-password-container .info-container{
+        margin-top: 20px;
+    }
+    .change-password-button{
+        /* background-color: orange; */
+        width: fit-content;
+        margin: 1rem;
+    }
+    .change-password-container button{
+        padding: 5px;
+    }
+
+    /*Voting Poll*/
+
+    .voting{
+        background-color: #fcf2f2;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 80vw;
+        margin: 2rem auto 10rem auto;
+        padding: 0;
+    }
+
+    .voting h3{
+        font-size: 20px;
+        padding: 10px;
+    }
+
+
+    /* REQUEST DOCUMENT IN DASHBOARD */
+    /* style for request document section */
+    .req-docs{
+        background-color: #f9f9f9;
+        /* background-color: red; */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 80vw;
+        margin: 2rem auto 10rem auto;
+        padding: 0;
+    }
+
+    .req-docs h3{
+        font-size: 20px;
+        padding: 10px;
+    }
+    .doc-type{
+        /* background-color: orange; */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 80vw;
+        margin: auto;
+    }
+    .doc-type > div {
+        background-color: #f0f0f0;
+        padding: 5px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 16px;
+        transition: all 0.5s ease;
+    }
+    .doc-form{
+        width: 80vw;
+        display: block;
+        padding: 0;
+    }
+
+    /* forms in request document */
+    .brgyClearance-form, .businessClearance-form,
+    .certOfIndigency-form, .certOfResidency-form{
+        width: 80vw;
+        margin: 1rem auto;
+    }
+    .brgyClearance-form label, .businessClearance-form label,
+    .certOfIndigency-form label, .certOfResidency-form label{
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .brgyClearance-form input, .businessClearance-form input,
+    .certOfIndigency-form input, .certOfResidency-form input{
+        width: 50vw;
+        height: 4vh;
+    }
+
+
+    /* CHATBOT */
+    .chatbox{
+        width: 75vw;
+        height: 300px;
+        padding: 10px;
+    }
+    .chat-messages{
+        font-size: 14px;
+    }
+    .chatbox h2{
+        font-family: "Nunito";
+        font-size: 16px;
+    }
+    .chat-input input {
+        position: relative;
+        top:200px;
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 5px;
+        width: 100px;
+    }
+    .chat-input button {
+        position: relative;
+        top:200px;
+        padding: 10px;
+    }
+      
+
+}
+
+@media screen and (min-width: 425px){
+    .sidenav2{
+        width: 30vw;
+    }
+    .sidenav2 .logout a{
+        font-size: 14px;
+    }
+    .widget i {
+        font-size: 18px;
+        margin-bottom: 5px;
+        display: block;
+        text-align: center;
+    }
+    .widget h2{
+        font-size: 12px;
+    }
+    .doc-type .docs{
+        /* height: 5vh; */
+        text-align: center;
+        padding: 10px;
+    }
+    .brgyClearance-form label, .businessClearance-form label,
+    .certOfIndigency-form label, .certOfResidency-form label{
+        font-size: 16px;
+        font-weight: 700;
+    }
+    .change-password-button button{
+        padding: 10px;
+    }
+}
+@media screen and (min-width: 570px){
+    .sidenav2{
+        width: 25vw;
+    }
+    .chatbox{
+        width: 45vw;
+        height: 300px;
+        padding: 10px;
+    }
+}
+@media screen and (min-width: 450px){
+    .chatbox{
+        width: 45vw;
+        height: 300px;
+        padding: 10px;
+    }
+}
+@media screen  and (min-width: 660px){
+    .sidenav2{
+        width: 24vw;
+    }
+    .sidenav2 .logout a{
+        font-size: 18px;
+    }
+    .list ul li a, .list ul li{
+        font-size: 20px;
+    }
+}
+@media screen  and (min-width: 730px){
+    .sidenav2{
+        width: 23vw;
+    }
+}
+@media screen and (min-width: 768px){
+    .sidenav2{
+        width: 20vw;
+    }
+    .sidenav2 .logout a{
+        font-size: 18px;
+    }
+    .admin-content h1{
+        font-size: 20px;
+        margin-left: 20px;
+    }
+    .dashboard-widgets .widget h2{
+        font-size: 16px;
+    }
+    .dashboard-widgets .widget{
+        /* height: 15vh; */
+        padding: 15px;
+        height: 14vh;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .sub-main-content .icon, .hr{
+        display: none;
+    }
+    .sidenav{
+        display: flex;
+        width: 18vw;
+    }
+    .sidenav .list ul li a{
+        font-size: 14px;
+    }
+    .sub-main-content{
+        width: 82vw;
+        right: 0;
+        margin: 0;
+        padding: 10px;
+        /* margin-left: 3rem; */
+    }
+    .list ul li a{
+        font-size: 18px;
+    }
+    .main-content{
+        /* background-color: pink; */
+        margin: 0;
+        padding: 0;
+    }
+    .ints h1{
+        font-size: 35px;
+    }
+    .admin-content h1{
+        font-size: 24px;
+    }
+    .dashboard-widgets{
+        /* background-color: green; */
+        width: 70vw;
+    }
+    .dashboard-widgets .widget{
+        width: 20vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .dashboard-logs{
+        /* background-color: pink; */
+        width: 80vw;
+        overflow: auto;
+    }
+    .dashboard-logs h2{
+        font-size: 24px;
+    }
+    .dashboard-logs table{
+        margin-bottom: 18px;
+    }
+    .dashboard-logs table tbody tr th{
+        padding: 10px;
+        font-size: 18px;
+    }
+    .dashboard-logs table tbody tr td{
+        font-size: 15px;
+    }
+
+    .profile-section{
+        padding: 0;
+    }
+    .profile-info{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 75vw;
+        margin: 1rem auto;
+    }
+    .profile-info h3{
+        font-size: 20px;
+        margin: 1rem 0;
+    }
+    /* personal information container */
+    .personal-info, .address-info, .contact-info, .change-password{
+        width: 35vw;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .info-container input{
+        width: 20vw;
+    }
+
+    /* .profile-section h2{
+        font-size: 24px;
+    }
+    .profile-section{
+        padding: 10px;
+    }
+    .profile-info{
+        width: 75vw;
+    }
+    .info-container{
+        width: 70vw; }*/
+    
+    .req-docs h3{
+        font-size: 24px;
+    }
+    .req-docs{
+        padding: 10px;
+    }
+    .doc-type{
+        width: 75vw;
+        display: flex;
+    }
+    .req-docs form{
+        padding: 10px 20px;
+        width: 75vw;
+        margin: auto;
+    }
+    .brgyClearance-form, .businessClearance-form,
+    .certOfResidency-form, .certOfIndigency-form{
+        width: 70vw;
+    }
+    .chatbox{
+        width: 25vw;
+        height: 300px;
+        padding: 10px;
+    }
+}
+
+@media screen and (min-width: 1440px){
+    .sidenav .list ul li a{
+        font-size: 20px;
+    }
+    .sidenav .logout a{
+        font-size: 20px;
+    }
+    .dashboard-logs{
+        width: 75vw;
+    }
+    .dashboard-logs table{
+        width: 70vw;
+    }
+    .profile-section{
+        width: 75vw;
+        padding: 10px;
+    }
+    .chatbox{
+        width: 20vw;
+        height: 300px;
+        padding: 10px;
+    }
+}
