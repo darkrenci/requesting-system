@@ -183,18 +183,23 @@
                                     <input type="date" name="birthday" id="birthday" placeholder="Birthday" required>
                                 </div>
 
+                                <div class ="input phone">
+                                    <label for ="">Citizenship: </label>
+                                    <input type="text" name="citizen" id="citizen" placeholder="" required>
+                                </div>
+
 
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="status">
-                                        <select id="options" name="options" class="p-1 rounded">
+                                        <select id="options" name="options" class="p-1 rounded" required>
                                             <option value="">Marital Status</option>
-                                            <option value="option">Married</option>
-                                            <option value="option">Single</option>
-                                            <option value="option">Widowed</option>
+                                            <option value="Married">Married</option>
+                                            <option value="Single">Single</option>
+                                            <option value="Widowed">Widowed</option>
                                         </select>
                                     </div>
                     
-                                    <div class="gender">
+                                    <div class="gender" required>
                                         <input type="radio" name="gender" value="male"> Male
                                         <input type="radio" name="gender" value="female"> Female
                                     </div>

@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"]) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $marital_status = $_POST['options'];
     $gender = $_POST['gender'];
+    $citizen = $_POST['citizen'];
     $hnum = $_POST['hnum'];
     $street = $_POST['street'];
     $others = $_POST['others'];
@@ -41,8 +42,8 @@ if ($_SERVER["REQUEST_METHOD"]) {
         echo '<p class="returningCountdown">Returning to the first page in <span id="countdown">' . $redirectTime . '</span> seconds.</p>';
     }else{
         // SQL query to insert data into table
-        $sql2 = "INSERT INTO resident (fname, lname, mname, email, phone, birthday, password, marital_status, gender, hnum, street, others)
-        VALUES ('$fname', '$lname', '$mname', '$email', '$phone', '$birthday', '$hashed_password', '$marital_status', '$gender', '$hnum', '$street', '$others')";
+        $sql2 = "INSERT INTO resident (fname, lname, mname, email, phone, birthday, password, marital_status, gender, citizen, hnum, street, others)
+        VALUES ('$fname', '$lname', '$mname', '$email', '$phone', '$birthday', '$hashed_password', '$marital_status', '$gender', '$citizen', '$hnum', '$street', '$others')";
         $insert = $conn->query($sql2);
         echo "<p class='text-center'>Sign up Successful, Log In to the page</p>";
         echo '<p class="returningCountdown">Returning to the first page in <span id="countdown">' . $redirectTime . '</span> seconds.</p>';

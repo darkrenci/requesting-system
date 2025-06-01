@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lname = htmlspecialchars($_POST['lname']);
     $birthday = htmlspecialchars($_POST['birthday']);
     $gender = htmlspecialchars($_POST['gender']);
+    $citizen = htmlspecialchars($_POST['citizen']);
     $hnum = htmlspecialchars($_POST['hnum']);
     $street = htmlspecialchars($_POST['street']);
     $others = htmlspecialchars($_POST['others']);
@@ -24,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = htmlspecialchars($_POST['phone']);
 
     // Prepare SQL update statement for user information
-    $sql = "UPDATE resident SET fname = ?, mname = ?, lname = ?, birthday = ?, gender = ?, hnum = ?, street = ?, others = ?, email = ?, phone = ? WHERE id = ?";
+    $sql = "UPDATE resident SET fname = ?, mname = ?, lname = ?, birthday = ?, gender = ?, citizen = ?, hnum = ?, street = ?, others = ?, email = ?, phone = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssssi", $fname, $mname, $lname, $birthday, $gender, $hnum, $street, $others, $email, $phone, $user_id);
+    $stmt->bind_param("ssssssssssi", $fname, $mname, $lname, $birthday, $gender, $citizen, $hnum, $street, $others, $email, $phone, $user_id);
 
     if ($stmt->execute()) {
         echo "Profile updated successfully.<br>";

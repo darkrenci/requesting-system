@@ -324,9 +324,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                     <div class="box two" id="numBarangayClearance">
                         Barangay Clearance Requests: 0
                     </div>
-                    <div class="box three" id="numBusinessClearance">
-                        Business Clearance Requests: 0
-                    </div>
                     <div class="box four" id="numIndigency">
                         Certificate of Indigency Requests: 0
                     </div>
@@ -351,10 +348,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                     <div class="request-box" id="barangayClearanceRequests">
                         <h3>Barangay Clearance Requests</h3>
                         <!-- Table for displaying Barangay Clearance Requests will be inserted here -->
-                    </div>
-                    <div class="request-box" id="businessClearanceRequests">
-                        <h3>Business Clearance Requests</h3>
-                        <!-- Table for displaying Business Clearance Requests will be inserted here -->
                     </div>
                     <div class="request-box" id="indigencyRequests">
                         <h3>Certificate of Indigency Requests</h3>

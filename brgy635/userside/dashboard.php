@@ -62,7 +62,7 @@ function getPendingDocsCount($conn, $user_id) {
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT fname, lname, mname, email, phone, birthday, marital_status, gender, hnum, street, others FROM resident WHERE id = ?";
+$sql = "SELECT fname, lname, mname, email, phone, birthday, marital_status, gender, citizen, hnum, street, others FROM resident WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -285,6 +285,12 @@ $user = $result->fetch_assoc();
                     <input type="text" name="gender" value="<?php echo htmlspecialchars($user['gender']); ?>" class="info-value">
                 </div>
             </div>
+            <div class="info-container">
+                <div class="info-item">
+                    <span class="info-label">Citizenship:</span>
+                    <input type="text" name="citizen" value="<?php echo htmlspecialchars($user['citizen']); ?>" class="info-value">
+                </div>
+            </div>
         </div>
 
         <!-- Address Info -->
@@ -363,7 +369,6 @@ $user = $result->fetch_assoc();
                     <h3>Request Document</h3>
                     <div class="doc-type">
                         <div class="doc1 docs" onclick="showForm('barangay')">Barangay Clearance</div>
-                        <div class="doc2 docs" onclick="showForm('business')">Business Clearance</div>
                         <div class="doc3 docs" onclick="showForm('indigency')">Certificate of Indigency</div>
                         <div class="doc4 docs" onclick="showForm('residency')">Certificate of Residency</div>
                     </div>
@@ -371,6 +376,9 @@ $user = $result->fetch_assoc();
                     <?php
 // Assuming $user array contains the logged-in user's details
 $full_name = htmlspecialchars($user['fname'] . ' ' . $user['mname'] . ' ' . $user['lname']);
+$postal_address = htmlspecialchars($user['hnum']. ' ' . $user['street']. ' '. $user['others']);
+$marital_status = htmlspecialchars($user['marital_status']);
+$citizen = htmlspecialchars($user['citizen']);
 ?>
 
 <form action="document.php" method="post" class="doc-form" id="barangay-form" style="display:none;">
@@ -381,15 +389,15 @@ $full_name = htmlspecialchars($user['fname'] . ' ' . $user['mname'] . ' ' . $use
     </div>
     <div class="brgyClearance-form">
         <label for="postal-address">Postal Address:</label>
-        <input type="text" id="postal-address" name="postal-address" required>
+        <input type="text" id="postal-address" name="postal-address" value="<?php echo $postal_address; ?>" readonly required>
     </div>
     <div class="brgyClearance-form">
         <label for="marital-status">Marital Status:</label>
-        <input type="text" id="marital-status" name="marital-status" required>
+        <input type="text" id="marital-status" name="marital-status" value="<?php echo $marital_status; ?>" readonly required>
     </div>
     <div class="brgyClearance-form">
         <label for="citizenship">Citizenship:</label>
-        <input type="text" id="citizenship" name="citizenship" required>
+        <input type="text" id="citizenship" name="citizenship" value ="<?php echo $citizen; ?>" readonly required>
     </div>
     <div class="brgyClearance-form">
         <label for="purpose">Purpose:</label>
@@ -446,7 +454,49 @@ $full_name = htmlspecialchars($user['fname'] . ' ' . $user['mname'] . ' ' . $use
     <!-- No changes needed here as per instructions -->
 </form>
 
-                <section id="voting-poll">
+                        
+<form action="document.php" method="post" class="doc-form" id="indigency-form" style="display:none;">
+    <!-- Certificate of Indigency Form Fields -->
+    <div class="certOfIndigency-form">
+        <label for="req-name-indigency">Requestor:</label>
+        <input type="text" id="req-name-indigency" name="req-name-indigency" value="<?php echo $full_name; ?>" readonly required>
+    </div>
+    <div class="certOfIndigency-form">
+        <label for="postal-address-indigency">Postal Address:</label>
+        <input type="text" id="postal-address-indigency" name="postal-address-indigency" value="<?php echo $postal_address; ?>" readonly required>
+    </div>
+    <div class="certOfIndigency-form">
+        <label for="purpose-indigency">Purpose:</label>
+        <input type="text" id="purpose-indigency" name="purpose-indigency" required>
+    </div>
+    <div class="certOfIndigency-form">
+        <input type="hidden" name="form_id" value="indigency-form">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<form action="document.php" method="post" class="doc-form" id="residency-form" style="display:none;">
+    <!-- Certificate of Residency Form Fields -->
+    <div class="certOfResidency-form">
+        <label for="req-name-residency">Requestor's Name:</label>
+        <input type="text" id="req-name-residency" name="req-name-residency" value="<?php echo $full_name; ?>" readonly required>
+    </div>
+    <div class="certOfResidency-form">
+        <label for="postal-address-residency">Postal Address:</label>
+        <input type="text" id="postal-address-residency" name="postal-address-residency" value= "<?php echo $postal_address; ?>" readonly required>
+    </div>
+    <div class="certOfResidency-form">
+        <label for="purpose-residency">Purpose:</label>
+        <input type="text" id="purpose-residency" name="purpose-residency" required>
+    </div>
+    <div class="certOfResidency-form">
+        <input type="hidden" name="form_id" value="residency-form">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+
+   <section id="voting-poll">
                 <div class="voting">
                     <h3>Voting Polls</h3>
 
@@ -484,47 +534,6 @@ $full_name = htmlspecialchars($user['fname'] . ' ' . $user['mname'] . ' ' . $use
                     </div>
                 <?php endwhile; ?>
                 </div>
-                            
-
-<form action="document.php" method="post" class="doc-form" id="indigency-form" style="display:none;">
-    <!-- Certificate of Indigency Form Fields -->
-    <div class="certOfIndigency-form">
-        <label for="req-name-indigency">Requestor:</label>
-        <input type="text" id="req-name-indigency" name="req-name-indigency" value="<?php echo $full_name; ?>" readonly required>
-    </div>
-    <div class="certOfIndigency-form">
-        <label for="postal-address-indigency">Postal Address:</label>
-        <input type="text" id="postal-address-indigency" name="postal-address-indigency" required>
-    </div>
-    <div class="certOfIndigency-form">
-        <label for="purpose-indigency">Purpose:</label>
-        <input type="text" id="purpose-indigency" name="purpose-indigency" required>
-    </div>
-    <div class="certOfIndigency-form">
-        <input type="hidden" name="form_id" value="indigency-form">
-        <button type="submit">Submit</button>
-    </div>
-</form>
-
-<form action="document.php" method="post" class="doc-form" id="residency-form" style="display:none;">
-    <!-- Certificate of Residency Form Fields -->
-    <div class="certOfResidency-form">
-        <label for="req-name-residency">Requestor's Name:</label>
-        <input type="text" id="req-name-residency" name="req-name-residency" value="<?php echo $full_name; ?>" readonly required>
-    </div>
-    <div class="certOfResidency-form">
-        <label for="postal-address-residency">Postal Address:</label>
-        <input type="text" id="postal-address-residency" name="postal-address-residency" required>
-    </div>
-    <div class="certOfResidency-form">
-        <label for="purpose-residency">Purpose:</label>
-        <input type="text" id="purpose-residency" name="purpose-residency" required>
-    </div>
-    <div class="certOfResidency-form">
-        <input type="hidden" name="form_id" value="residency-form">
-        <button type="submit">Submit</button>
-    </div>
-</form>
 
               </div>
 
