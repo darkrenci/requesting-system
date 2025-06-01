@@ -51,7 +51,7 @@ elseif ($section == 'docRequest') {
 
 elseif ($section == 'listUsers') {
     // Fetch data for list of users
-    $usersQuery = "SELECT id,fname, lname, mname, phone, gender, hnum, street, email, birthday FROM resident";
+    $usersQuery = "SELECT id,fname, lname, mname, phone, gender, citizen, hnum, street, email, birthday FROM resident";
     $usersResult = $conn->query($usersQuery);
     $users = [];
     while ($row = $usersResult->fetch_assoc()) {

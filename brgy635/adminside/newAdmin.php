@@ -376,10 +376,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                                 <th>Middle Name</th>
                                 <th>Contact Number</th>
                                 <th>Gender</th>
+                                <th>Citizen</th>
                                 <th>House Number</th>
                                 <th>Street</th>
                                 <th>Email</th>
                                 <th>Birthday</th>
+
                             </tr>
                         </thead>
                         <tbody id="userList"></tbody>

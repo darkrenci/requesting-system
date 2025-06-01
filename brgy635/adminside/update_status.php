@@ -1,7 +1,15 @@
 <?php
+session_start(); // Add this at the very top to use session variables
+
 include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Make sure the user is logged in
+    if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
+        echo 'User not logged in';
+        exit;
+    }
+
     $requestId = $_POST['requestId'];
     $newStatus = $_POST['status'];
     $table = $_POST['table'];
@@ -18,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare($query);
     $stmt->bind_param('si', $newStatus, $requestId);
     $stmt->execute();
-    
+
     // Check for errors
     if ($stmt->error) {
         echo 'Error: ' . $stmt->error;
@@ -27,10 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Check if any rows were affected
     if ($stmt->affected_rows > 0) {
-        // Insert log
-        $log_entry = "Admin updated queue status to '$newStatus' for request ID $requestId in table $table.";
-        insertLog($conn, $log_entry);
-        
+        // Get session details
+        $admin_id = $_SESSION['user_id']; // from session
+        $username = $_SESSION['username']; // from session
+
+        // Insert log with dynamic username
+        $log_entry = $username . " updated queue status to '$newStatus' for request ID $requestId in table $table.";
+        insertLog($conn, $admin_id, $log_entry);
+
         echo 'Status updated successfully';
     } else {
         echo 'Failed to update status';
@@ -42,12 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo 'Invalid request method';
 }
 
-function insertLog($conn, $log_entry) {
+// Updated insertLog function to accept $admin_id
+function insertLog($conn, $admin_id, $log_entry) {
     $log_date = date('Y-m-d H:i:s');
+    $action = 'Update'; // Adjust this as needed
     $stmt = $conn->prepare("INSERT INTO logs (admin_id, action, log_entry, log_date) VALUES (?, ?, ?, ?)");
-    // Assuming you have an admin ID, replace '1' with the actual admin ID
-    $admin_id = 1;
-    $action = 'Update'; // Adjust this as per the action being performed
     $stmt->bind_param("isss", $admin_id, $action, $log_entry, $log_date);
     $stmt->execute();
     $stmt->close();

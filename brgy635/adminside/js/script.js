@@ -340,7 +340,24 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (sectionId === "listUsers") {
             updateUserList(data.users);
         } else if (sectionId === "logs") {
-            document.getElementById("logList").innerHTML = data.logs.map(log => `<div>${log}</div>`).join('');
+            document.getElementById("logList").innerHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Log Entry</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${data.logs.map(log => `
+                            <tr>
+                                <td>${log.log_date}</td>
+                                <td>${log.log_entry}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
         } else if (sectionId === "pollSystem") {
             // Since pollSystem content is already in newAdmin.php, no need to fetch
             // Just ensure the section is shown by switchSection function
@@ -405,6 +422,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <td>${user.mname}</td>
                 <td>${user.phone}</td>
                 <td>${user.gender}</td>
+                <td>${user.citizen}</td>
                 <td>${user.hnum}</td>
                 <td>${user.street}</td>
                 <td>${user.email}</td>
