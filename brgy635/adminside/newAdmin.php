@@ -25,6 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savePoll'])) {
             $stmt->execute();
             $stmt->close();
 
+            $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+            $log_entry = $username . " update the Survey: $question";
+            $log_date = date('Y-m-d H:i:s');
+            $action = "Update Survey";
+            $stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $action, $log_entry, $log_date);
+            $stmt->execute();
+            $stmt->close();   
+
             $conn->query("DELETE FROM options WHERE poll_id = $poll_id");
         } else {
             $stmt = $conn->prepare("INSERT INTO polls (question, created_by) VALUES (?, ?)");
@@ -41,7 +50,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savePoll'])) {
         }
         $opt_stmt->close();
 
-        $_SESSION['message'] = "✅ Poll saved!";
+        $_SESSION['message'] = "✅ Survey saved!";
+
+        $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+        $log_entry = $username . " add Survey: $question";
+        $log_date = date('Y-m-d H:i:s');
+        $action = "Add Survey";
+        $stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $action, $log_entry, $log_date);
+        $stmt->execute();
+        $stmt->close();    
+                       
     } else {
         $_SESSION['message'] = "❌ User not found.";
     }
@@ -57,7 +76,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
     $conn->query("DELETE FROM options WHERE poll_id = $poll_id");
     $conn->query("DELETE FROM polls WHERE id = $poll_id");
 
-    $_SESSION['message'] = "🗑️ Poll deleted.";
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+    $log_entry = $username . " deleted Survey: $question";
+    $log_date = date('Y-m-d H:i:s');
+    $action = "Delete Survey";
+    $stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $action, $log_entry, $log_date);
+    $stmt->execute();
+    $stmt->close();    
+                                
+    $_SESSION['message'] = "🗑️ Survey deleted.";
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
@@ -129,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                 <li><a href="#" id="listUsersLink">List of Users</a></li>
                 <li><a href="#" id="councilImgLink">Add / Delete Council Image</a></li>
                 <li><a href="#" id="eventImgLink">Add Events</a></li>
-                <li><a href="#" id="pollSystemLink">Poll System</a></li>
+                <li><a href="#" id="pollSystemLink">Survey System</a></li>
                 <li><a href="#" id="announcementLink">Post Announcement</a></li>
                 <li><a href="#" id="logsLink">Logs</a></li>
                 <li><a href="#" id="deleteAllLink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete Accounts</a></li>
@@ -172,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                             <li><a href="#" id="listUsersLink">List of Users</a></li>
                             <li><a href="#" id="councilImgLink">Add / Delete Council Image</a></li>
                             <li><a href="#" id="eventImgLink">Add Events</a></li>
-                            <li><a href="#" id="pollSystemLink">Poll System</a></li>
+                            <li><a href="#" id="pollSystemLink">Survey System</a></li>
                             <li><a href="#" id="announcementLink">Post Announcement</a></li>
                             <li><a href="#" id="logsLink">Logs</a></li>
                             <li><a href="#" id="deleteAllLink" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete Accounts</a></li>
@@ -390,111 +418,142 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
             </div>
 
             <!-- ADD COUNCIL IMAGE CODE -->
-            <div id="councilImg" class="content-section">
-                <h2>Add/Delete Council Image</h2>
-                <!-- input image option -->
-                <div class="containerWrap">
-                    <form class="d-md-flex align-items-center justify-content-between" action="" method="post" enctype="multipart/form-data">
-                        <input type="file" name="image" required multiple>
-                        <div class="btnHolder d-flex align-items-center justify-content-center">
-                            <button class="btn btn-primary" type="submit" name="submit_council">Upload</button>
-                        </div>
-                        
-                    </form>
-
-
-                    <!-- UPLOAD IMAGE IN DATABASE -->
-                    <?php
-                        include("connect.php");
-
-                        if (isset($_POST['submit_council'])) {
-                            // Check if file was uploaded without errors
-                            if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-                                $image = $_FILES['image']['tmp_name'];
-                                $imgContent = addslashes(file_get_contents($image));
-                                $imageType = $_FILES['image']['type'];
-                                $imageName = $_FILES['image']['name'];
-
-                                // Insert image content into database
-                                $sql = "INSERT INTO img_upload (image, image_type, image_name) VALUES ('$imgContent', '$imageType', '$imageName')";
-
-                                if ($conn->query($sql) === TRUE) {
-                                    echo "File uploaded successfully.";
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . $conn->error;
-                                }
-                            } else {
-                                echo "Error uploading file.";
-                            }
-                        }
-
-                        $conn->close();
-                    ?>
-                </div>
-                
-
-                <!-- display uploaded images in this container div -->
-                <div class="display">
-                    <?php
-                        include("connect.php");
-
-                        // Handle delete request
-                        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id_council'])) {
-                            $delete_id = $_POST['delete_id_council'];
-                            $delete_sql = "DELETE FROM img_upload WHERE id = ?";
-                            $stmt = $conn->prepare($delete_sql);
-                            $stmt->bind_param("i", $delete_id);
-                            if ($stmt->execute()) {
-                                echo "Image deleted successfully.";
-                            } else {
-                                echo "Error deleting image: " . $conn->error;
-                            }
-                            $stmt->close();
-                        }
-                        
-                        // Display images
-                        $sql = "SELECT id, image, image_type, image_name FROM img_upload";
-                        $result = $conn->query($sql);
-                        
-                        if ($result->num_rows > 0) {
-                            echo '<div class="gallery">';
-                            while ($row = $result->fetch_assoc()) {
-                                echo '<div class="image">';
-                                echo '<img src="data:' . $row['image_type'] . ';base64,' . base64_encode($row['image']) . '" alt="' . $row['image_name'] . '">';
-                                // echo '<p>' . $row['image_name'] . '</p>';
-                                echo '<form method="POST" onsubmit="return confirm(\'Are you sure you want to delete this image?\');">';
-                                echo '<input type="hidden" name="delete_id_council" value="' . $row['id'] . '">';
-                                echo '<center><button class="btn btn-primary" type="submit">Delete</button></center>';
-                                echo '</form>';
-                                echo '</div>';
-                            }
-                            echo '</div>';
-                        } else {
-                            echo "No images found.";
-                        }
-                        
-                        $conn->close();
-                    ?>
-                        
-                </div>
-
+           <div id="councilImg" class="content-section">
+    <h2>Add/Delete Council Image</h2>
+    <!-- input image option -->
+    <div class="containerWrap">
+        <form class="d-md-flex align-items-center justify-content-between" action="" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required multiple>
+            <div class="btnHolder d-flex align-items-center justify-content-center">
+                <button class="btn btn-primary" type="submit" name="submit_council">Upload</button>
             </div>
+        </form>
 
-            <div id="pollSystem" class="content-section">
-                <h2>Poll System</h2>
+        <!-- UPLOAD IMAGE IN DATABASE -->
+        <?php
+        include("connect.php");
+
+        if (isset($_POST['submit_council'])) {
+            if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+                $image = $_FILES['image']['tmp_name'];
+                $imgContent = addslashes(file_get_contents($image));
+                $imageType = $_FILES['image']['type'];
+                $imageName = $_FILES['image']['name'];
+
+                $sql = "INSERT INTO img_upload (image, image_type, image_name) VALUES ('$imgContent', '$imageType', '$imageName')";
+
+                if ($conn->query($sql) === TRUE) {
+                    echo "File uploaded successfully.";
+
+                    // Log upload
+                    $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+                    $log_entry = $username . " uploaded council image: $imageName";
+                    $log_date = date('Y-m-d H:i:s');
+                    $action = "Upload Council Image";
+                    $stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+                    $stmt->bind_param("sss", $action, $log_entry, $log_date);
+                    $stmt->execute();
+                    $stmt->close();
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
+            } else {
+                echo "Error uploading file.";
+            }
+        }
+
+        $conn->close();
+        ?>
+    </div>
+
+    <!-- display uploaded images in this container div -->
+    <div class="display">
+        <?php
+        include("connect.php");
+
+        // Handle delete request
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id_council'])) {
+            $delete_id = $_POST['delete_id_council'];
+
+            // Get the image name before deleting (for log)
+            $get_image_name = $conn->prepare("SELECT image_name FROM img_upload WHERE id = ?");
+            $get_image_name->bind_param("i", $delete_id);
+            $get_image_name->execute();
+            $result_name = $get_image_name->get_result();
+            $image_name = '';
+            if ($result_name->num_rows > 0) {
+                $row = $result_name->fetch_assoc();
+                $image_name = $row['image_name'];
+            }
+            $get_image_name->close();
+
+            // Delete
+            $delete_sql = "DELETE FROM img_upload WHERE id = ?";
+            $stmt = $conn->prepare($delete_sql);
+            $stmt->bind_param("i", $delete_id);
+            if ($stmt->execute()) {
+                echo "Image deleted successfully.";
+
+                // Log delete
+                $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+                $log_entry = $username . " deleted council image: $image_name (ID: $delete_id)";
+                $log_date = date('Y-m-d H:i:s');
+                $action = "Delete Council Image";
+                $log_stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+                $log_stmt->bind_param("sss", $action, $log_entry, $log_date);
+                $log_stmt->execute();
+                $log_stmt->close();
+            } else {
+                echo "Error deleting image: " . $conn->error;
+            }
+            $stmt->close();
+        }
+
+        // Display images
+        $sql = "SELECT id, image, image_type, image_name FROM img_upload";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo '<div class="gallery">';
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="image">';
+                echo '<img src="data:' . $row['image_type'] . ';base64,' . base64_encode($row['image']) . '" alt="' . $row['image_name'] . '">';
+                echo '<form method="POST" onsubmit="return confirm(\'Are you sure you want to delete this image?\');">';
+                echo '<input type="hidden" name="delete_id_council" value="' . $row['id'] . '">';
+                echo '<center><button class="btn btn-primary" type="submit">Delete</button></center>';
+                echo '</form>';
+                echo '</div>';
+            }
+            echo '</div>';
+        } else {
+            echo "No images found.";
+        }
+
+        $conn->close();
+        ?>
+    </div>
+</div>
+
+<?php
+$username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+
+?>
+
+      <div id="pollSystem" class="content-section">
+                <h2>Survey System</h2>
 
                 <!-- Add / Update Poll Form -->
                 <div id="pollForm">
                     <h3 id="formTitle">Add Poll</h3>
                     <form method="post">
                         <input type="hidden" name="poll_id" id="poll_id">
-                        <input type="text" name="question" id="question" placeholder="Poll Title" required>
+                        <input type="text" name="question" id="question" placeholder="Survey Title" required>
                         <div id="optionFields">
                             <input type="text" name="options[]" placeholder="Option 1" required>
                             <input type="text" name="options[]" placeholder="Option 2" required>
                         </div>
                         <button type="button" onclick="addOptionField()">+ Add Option</button>
-                        <input type="text" name="created_by" id="created_by" placeholder="Created By (username)" required>
+                        <input type="text" name="created_by" id="created_by" placeholder="Created By (username)" value="<?php echo $username; ?>" readonly required>
                         <button type="submit" name="savePoll">Save Poll</button>
                         <button type="button" onclick="resetForm()">Cancel</button>
                     </form>
@@ -546,7 +605,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                     <form class="d-md-flex align-items-center justify-content-between" action="" method="post" enctype="multipart/form-data">
                         <input type="file" name="image" required multiple>
                         <div class="btnHolder d-flex align-items-center justify-content-center">
-                            <button class="btn btn-primary" type="submit" name="submit_council">Upload</button>
+                            <button class="btn btn-primary" type="submit" name="submit_event">Upload</button>
                         </div>
                         
                     </form>
@@ -568,6 +627,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
 
                                 if ($conn->query($sql) === TRUE) {
                                     echo "File uploaded successfully.";
+
+                                    $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+                                    $log_entry = $username . " uploaded event image: $imageName";
+                                    $log_date = date('Y-m-d H:i:s');
+                                    $action = "Upload Event Image";
+                                    $stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+                                    $stmt->bind_param("sss", $action, $log_entry, $log_date);
+                                    $stmt->execute();
+                                    $stmt->close();                                
                                 } else {
                                     echo "Error: " . $sql . "<br>" . $conn->error;
                                 }
@@ -585,14 +653,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                     <?php
                         include("connect.php");
 
+
+
                         // Handle delete request
                         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id_events'])) {
                             $delete_id = $_POST['delete_id_events'];
+
+                            $get_image_name = $conn->prepare("SELECT image_name FROM img_events WHERE id = ?");
+                            $get_image_name->bind_param("i", $delete_id);
+                            $get_image_name->execute();
+                            $result_name = $get_image_name->get_result();
+                            $image_name = '';
+                            if ($result_name->num_rows > 0) {
+                                $row = $result_name->fetch_assoc();
+                                $image_name = $row['image_name'];
+                            }
+                            $get_image_name->close();
+
                             $delete_sql = "DELETE FROM img_events WHERE id = ?";
                             $stmt = $conn->prepare($delete_sql);
                             $stmt->bind_param("i", $delete_id);
                             if ($stmt->execute()) {
                                 echo "Image deleted successfully.";
+
+                                $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+                                $log_entry = $username . " deleted event image: $delete_id";
+                                $log_date = date('Y-m-d H:i:s');
+                                $action = "Delete Event Image";
+                                $stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+                                $stmt->bind_param("sss", $action, $log_entry, $log_date);
+                                $stmt->execute();
+                                $stmt->close();    
+
                             } else {
                                 echo "Error deleting image: " . $conn->error;
                             }
@@ -682,6 +774,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                             $insert = "INSERT INTO announcement (`title`, `text`, `date`) VALUES ('$title', '$announcement', '$date')";
                             if (mysqli_query($conn, $insert)) {
                                 echo "<div class='uploadResponse'><h3>Successfully added</h3></div>";
+
+                                $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+                                    $log_entry = $username . " uploaded announcement: $title";
+                                    $log_date = date('Y-m-d H:i:s');
+                                    $action = "Upload Announcement";
+                                    $stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+                                    $stmt->bind_param("sss", $action, $log_entry, $log_date);
+                                    $stmt->execute();
+                                    $stmt->close();    
                             } else {
                                 echo "<div class='uploadResponse'><h3>Error: " . mysqli_error($conn) . "</h3></div>";
                             }
@@ -704,6 +805,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
                                 echo "<div class = 'uploadResponse'>";
                                 echo "<h3>Successfully deleted</h3>";
                                 echo "</div>";
+
+                                $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Unknown User';
+                                $log_entry = $username . " deleted announcement: $title";
+                                $log_date = date('Y-m-d H:i:s');
+                                $action = "Delete Announcement";
+                                $stmt = $conn->prepare("INSERT INTO logs (action, log_entry, log_date) VALUES (?, ?, ?)");
+                                $stmt->bind_param("sss", $action, $log_entry, $log_date);
+                                $stmt->execute();
+                                $stmt->close();    
                             }
                     }
 
@@ -825,13 +935,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deletePoll'])) {
             });
         }
 
-            document.getElementById('formTitle').innerText = "Update Poll";
+            document.getElementById('formTitle').innerText = "Update Survey";
 
         function resetForm() {
             document.getElementById("poll_id").value = "";
             document.getElementById("question").value = "";
             document.getElementById("created_by").value = "";
-            document.getElementById("formTitle").innerText = "Add Poll";
+            document.getElementById("formTitle").innerText = "Add Survey";
             const optionContainer = document.getElementById("optionFields");
             optionContainer.innerHTML = `
                 <input type="text" name="options[]" placeholder="Option 1" required>

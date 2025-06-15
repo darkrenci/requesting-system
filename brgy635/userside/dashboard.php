@@ -16,7 +16,7 @@ $polls = $conn->query("
     ORDER BY p.id DESC
 ");
 
-function getRequestedDocsCount($conn, $user_id) {
+function getRequestedDocsCount($conn, $user_id): mixed {
     $query = "
     SELECT COUNT(*) as count 
     FROM (
@@ -95,7 +95,7 @@ $user = $result->fetch_assoc();
                 <li><a href="#" id="dashboard-link" class="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
                 <li><a href="#profile-section" onclick="scrollToProfile(event)"><i class="fas fa-user"></i>Profile</a></li>
                 <li><a href="#request-document" onclick="scrollToRequestDocument(event)"><i class="fas fa-file-alt"></i>Request Document</a></li>
-                <li><a href="#voting-poll" onclick="scrollToRequestDocument(event)"><i class="fas fa-square-poll-horizontal"></i>Voting Poll</a></li>
+                <li><a href="#voting-poll" onclick="scrollToRequestDocument(event)"><i class="fas fa-square-poll-horizontal"></i>Surveys</a></li>
               </ul>
           </div>    
           
@@ -145,10 +145,13 @@ $user = $result->fetch_assoc();
                   <h1>Barangay 635</h1>
                 </div>
                 
+                <?php
+                $full_name = htmlspecialchars($user['fname'] . ' ' . $user['mname'] . ' ' . $user['lname']);
+                ?>
                 
 
                 <div class="admin-content">
-                  <h1>Welcome <?php echo htmlspecialchars($user['email']); ?> to your dashboard</h1>
+                  <h1>Welcome <?php echo $full_name; ?> to your dashboard</h1>
                     <!-- <img src="pics/user.png" alt=""> -->
                 </div>
             
@@ -498,7 +501,7 @@ $citizen = htmlspecialchars($user['citizen']);
 
    <section id="voting-poll">
                 <div class="voting">
-                    <h3>Voting Polls</h3>
+                    <h3>Surveys</h3>
 
                     <?php while ($poll = $polls->fetch_assoc()): ?>
                     <?php
